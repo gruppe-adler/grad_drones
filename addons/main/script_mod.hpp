@@ -1,5 +1,5 @@
-#define MAINPREFIX x
-#define PREFIX grad_modTemplate
+#define MAINPREFIX z
+#define PREFIX grad_drones
 
 #include "script_version.hpp"
 
@@ -7,8 +7,8 @@
 #define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
 
 #define REQUIRED_VERSION 1.80
-#define REQUIRED_CBA_VERSION { 3, 5, 0 }
-#define REQUIRED_ACE_VERSION { 3, 11, 0 }
+#define REQUIRED_CBA_VERSION { 3, 19, 0 }
+#define REQUIRED_ACE_VERSION { 3, 21, 2 }
 
 #define QMAIN_ADDON QUOTE(MAIN_ADDON)
 #define QCOMPONENT QUOTE(COMPONENT)
@@ -17,5 +17,5 @@
 #define EADDON(PVAR) DOUBLES(PREFIX,PVAR)
 #define QEADDON(PVAR) QUOTE(EADDON(PVAR))
 
-#define AUTHOR { "Salbei" }
+#define AUTHOR { "Bernhard aka b-mayr-1984" }
 #define QAUTHOR QUOTE(AUTHOR)

@@ -2,3 +2,43 @@ name = "Gruppe Adler Drones"
 author = "Bernhard aka b-mayr-1984"
 prefix = "grad_drones"
 mainprefix = "z"
+url = "https://github.com/gruppe-adler/grad_drones"
+
+[files]
+include = [
+    "mod.cpp",      # These files are copied to the build directory by default
+    # "meta.cpp",     # They do not need to be added to your list
+    "LICENSE.md",
+    "logo_active_ca.paa",
+    "logo_ca.paa",
+    "overview_co.paa",
+    "logo_small_ca.paa"
+]
+
+
+# Launched with `hemtt launch`
+[hemtt.launch.default]
+workshop = [
+    "450814997",  # CBA_A3's Workshop ID
+    "1779063631", # Zeus Enhanced 
+    "3499977893", # Advanced Developer Tools
+    "463939057",  # ACE
+    # "1645973522", # Intercept Minimal Dev
+    # "1585582292", # Arma Debug Engine
+]
+mission = "grad_drones_test.Stratis" # Launch into existing Editor Mission
+parameters = [
+]
+
+[hemtt.launch.debug]
+workshop = [
+    "450814997",  # CBA_A3's Workshop ID
+    "1779063631", # Zeus Enhanced 
+    "3499977893", # Advanced Developer Tools
+    "463939057",  # ACE
+    "1645973522", # Intercept Minimal Dev
+    "1585582292", # Arma Debug Engine
+]
+mission = "grad_drones_test.Stratis" # Launch into existing Editor Mission
+parameters = [
+]
