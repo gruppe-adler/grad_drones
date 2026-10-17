@@ -1,0 +1,19 @@
+name = "Gruppe Adler Mod Template"
+prefix = "grad_modTemplate"
+author = "Salbei"
+files = [
+    "mod.cpp",
+    "logo.paa",
+    "LICENSE",
+    "README.md"
+]
+
+key_name = "{{prefix}}_{{version}}"
+authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
+
+releasebuild = [
+    "@zip grad_modTemplate_{{semver.major}}.{{semver.minor}}.{{semver.patch}}.{{semver.build}}"
+]
+
+[header_exts]
+version= "{{git \"id 8\"}}"
