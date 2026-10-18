@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+// #include "script_component.hpp"
 
 
 class CfgPatches
@@ -16,154 +16,165 @@ class CfgPatches
 };
 
 
-/*
-example from: configFile >> "CfgVehicles" >> "I_E_UAV_06_F"
-soundEngineOffExt[] = {"\z\grad_modTemplate\addons\main\data\dronesound_10.ogg",2.5,1,200};
-soundEngineOffExt[] = {"A3\Sounds_F_Orange\Vehicles\Air\UAV_06\UAV_06_Eng_Off_Ext",0.316228,1,50};
-soundEngineOffInt[] = {"A3\Sounds_F_Orange\Vehicles\Air\UAV_06\UAV_06_Eng_Off_Int",0.158489,1,10};
-soundEngineOffInt[] = {"A3\Sounds_F_Orange\Vehicles\Air\UAV_01\Uav_01_Eng_Off_Ext",0.158489,1,10};
-soundEngineOnExt[] = {"A3\Sounds_F_Orange\Vehicles\Air\UAV_06\UAV_06_Eng_On_Ext",0.316228,1,50};
-soundEngineOnInt[] = {"A3\Sounds_F_Orange\Vehicles\Air\UAV_06\UAV_06_Eng_On_Int",0.158489,1,10};
-soundEngineOnInt[] = {"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Eng_On_Int",0.158489,1,10};
-*/
-
 class CfgVehicles {
-    class UAV_01_base_F;
-    // NATO Darter
-    class B_UAV_01_F: UAV_01_base_F {
-        soundEngineOnExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        // soundEngineOnInt[] = {QPATHTOF(data\dronesound_10.ogg), 0.5, 1, 10};
-        soundEngineOffExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        // soundEngineOffInt[] = {QPATHTOF(data\dronesound_10.ogg), 0.5, 1, 10};
-        
-        // class Sounds {
-        //     class EngineExt {
-        //         sound[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        //         attenuationEffectSpeed = 5;
-        //         distanceFilter = "softDryAttenuationFilter";
-        //         frequency = "0.8 + (rpm/2)"; 
-        //         volume = "engineOn*camPos"; 
-        //     };
-        // };
-    };
-    // CSAT Darter
-    class O_UAV_01_F: UAV_01_base_F {
-        soundEngineOnExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        soundEngineOffExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        
-        class Sounds {
-            class EngineExt {
-                sound[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-                attenuationEffectSpeed = 5;
-                distanceFilter = "softDryAttenuationFilter";
-                frequency = "0.8 + (rpm/2)"; 
-                volume = "engineOn*camPos"; 
-            };
-        };
-    };
-    // AAF Darter
-    class I_UAV_01_F: UAV_01_base_F {
-        soundEngineOnExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        soundEngineOffExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        
-        class Sounds {
-            class EngineExt {
-                sound[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-                attenuationEffectSpeed = 5;
-                distanceFilter = "softDryAttenuationFilter";
-                frequency = "0.8 + (rpm/2)"; 
-                volume = "engineOn*camPos"; 
-            };
-        };
-    };
-    // LDF Darter
-    class I_E_UAV_01_F: UAV_01_base_F {
-        soundEngineOnExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        soundEngineOffExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        
-        class Sounds {
-            class EngineExt {
-                sound[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-                attenuationEffectSpeed = 5;
-                distanceFilter = "softDryAttenuationFilter";
-                frequency = "0.8 + (rpm/2)"; 
-                volume = "engineOn*camPos"; 
-            };
-        };
-    };
-     // IDAP Darter
-    class C_IDAP_UAV_01_F: UAV_01_base_F {
-        soundEngineOnExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        soundEngineOffExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        
-        class Sounds {
-            class EngineExt {
-                sound[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-                attenuationEffectSpeed = 5;
-                distanceFilter = "softDryAttenuationFilter";
-                frequency = "0.8 + (rpm/2)"; 
-                volume = "engineOn*camPos"; 
-            };
-        };
-    };
-    // Civilian Darter
-    class CIV_UAV_01_lxWS: UAV_01_base_F {
-        soundEngineOnExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        soundEngineOffExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        
-        class Sounds {
-            class EngineExt {
-                sound[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-                attenuationEffectSpeed = 5;
-                distanceFilter = "softDryAttenuationFilter";
-                frequency = "0.8 + (rpm/2)"; 
-                volume = "engineOn*camPos"; 
-            };
-        };
-    };
-   // ION Darter
-    class ION_UAV_01_lxWS: UAV_01_base_F {
-        soundEngineOnExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        soundEngineOffExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        
-        class Sounds {
-            class EngineExt {
-                sound[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-                attenuationEffectSpeed = 5;
-                distanceFilter = "softDryAttenuationFilter";
-                frequency = "0.8 + (rpm/2)"; 
-                volume = "engineOn*camPos"; 
-            };
-        };
-    };
-    // MJTF Darter (Woodland Camouflage)
-    class EF_B_UAV_01_MJTF_Wdl: UAV_01_base_F {
-        soundEngineOnExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        soundEngineOffExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        
-        class Sounds {
-            class EngineExt {
-                sound[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-                attenuationEffectSpeed = 5;
-                distanceFilter = "softDryAttenuationFilter";
-                frequency = "0.8 + (rpm/2)"; 
-                volume = "engineOn*camPos"; 
-            };
-        };
-    };
-    // MJTF Darter (Desert Camouflage)
-    class EF_B_UAV_01_MJTF_Des: UAV_01_base_F {
-        soundEngineOnExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        soundEngineOffExt[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-        
-        class Sounds {
-            class EngineExt {
-                sound[] = {QPATHTOF(data\dronesound_10.ogg), 2.5, 1, 200};
-                attenuationEffectSpeed = 5;
-                distanceFilter = "softDryAttenuationFilter";
-                frequency = "0.8 + (rpm/2)"; 
-                volume = "engineOn*camPos"; 
-            };
-        };
+	class All;
+	class AllVehicles: All {};
+	class Air: AllVehicles {};
+	class Helicopter: Air {};
+	class Helicopter_Base_F: Helicopter {};
+	class UAV_01_base_F: Helicopter_Base_F {
+		class Sounds
+		{
+			class Engine_Idle_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Eng_01_Ext.wss",
+					14.125376,
+					1,
+					250
+				};
+			};
+			class Engine_01_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Eng_01_Ext.wss",
+					17.782794,
+					1,
+					250
+				};
+			};
+			class Engine_02_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Eng_02_Ext.wss",
+					17.782794,
+					1,
+					250
+				};
+			};
+			class Engine_03_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Eng_03_Ext.wss",
+					19.952624,
+					1,
+					250
+				};
+			};
+			class Engine_Lateral_Movement_01_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Engine_Lateral_Movement_Ext.wss",
+					10,
+					1,
+					250
+				};
+			};
+			class WindNoise_01_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_WindNoise_01_Ext.wss",
+					14.125375,
+					1,
+					250
+				};
+			};
+			class Rotors_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Rotors_01.wss",
+					3.1622776,
+					3.2,
+					250
+				};
+			};
+			class scrubLand_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Scrub_Land_Ext.wss",
+					1.7782794,
+					1,
+					50
+				};
+			};
+			class scrubTree_01_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Scrub_Tree_01_Ext.wss",
+					11.220185,
+					1,
+					50
+				};
+			};
+			class scrubTree_02_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Scrub_Tree_02_Ext.wss",
+					11.220185,
+					1,
+					50
+				};
+			};
+			class scrubBuilding_01_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Scrub_Object_01.wss",
+					1.7782794,
+					1,
+					50
+				};
+			};
+			class scrubBuilding_02_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Scrub_Object_03.wss",
+					1.5848932,
+					1,
+					50
+				};
+			};
+			class scrubObject_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Scrub_Object_01.wss",
+					1.7782794,
+					1,
+					50
+				};
+			};
+			class scrubArmor_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Scrub_Land_Ext.wss",
+					1.7782794,
+					1,
+					50
+				};
+			};
+			class Rain_Ext
+			{
+				sound[]=
+				{
+					"A3\Sounds_F_Orange\Vehicles\Shared\Rain\Vehicles_Rain_02.wss",
+					2.5118864,
+					1,
+					15
+				};
+			};
+		};
     };
 };
