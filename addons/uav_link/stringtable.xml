@@ -5,6 +5,10 @@
             <English>Tactical Training Team</English>
             <German>Tactical Training Team</German>
         </Key>
+        <Key ID="STR_grad_drones_Uav_Link_GradDrones">
+            <English>Gruppe Adler Drones</English>
+            <German>Gruppe Adler Drones</German>
+        </Key>
         <Key ID="STR_grad_drones_Uav_Link_URL">
             <English>https://tacticalteam.de</English>
             <German>https://tacticalteam.de</German>
