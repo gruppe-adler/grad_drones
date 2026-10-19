@@ -3,7 +3,7 @@
 
 class CfgPatches
 {
-    class grad_drones
+    class ADDON
     {
         author = "Bernhard aka b-mayr-1984";
         units[] = {};
