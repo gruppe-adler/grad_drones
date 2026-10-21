@@ -19,7 +19,7 @@
 
 class CfgPatches
 {
-    class grad_drones
+    class ADDON
     {
         author = "Bernhard aka b-mayr-1984";
         units[] = {};
@@ -29,5 +29,6 @@ class CfgPatches
         {
             // "rhs_c_weapons", "rhs_c_heavyweapons","rhs_sounds", "UK3CB_Factions_Vehicles_Ural"
         };
+        VERSION_CONFIG;
     };
 };
