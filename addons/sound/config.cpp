@@ -85,16 +85,6 @@ class CfgVehicles {
 					250
 				};
 			};
-			class Rotors_Ext
-			{
-				sound[]=
-				{
-					"A3\Sounds_F_Orange\Vehicles\Air\Uav_01\Uav_01_Rotors_01.wss",
-					3.1622776,
-					3.2,
-					250
-				};
-			};
 			class scrubLand_Ext
 			{
 				sound[]=
