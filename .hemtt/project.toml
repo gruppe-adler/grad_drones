@@ -28,6 +28,7 @@ workshop = [
 ]
 mission = "grad_drones_test.Stratis" # Launch into existing Editor Mission
 parameters = [
+    "-mod=WS"
 ]
 
 [hemtt.launch.debug]
@@ -41,4 +42,5 @@ workshop = [
 ]
 mission = "grad_drones_test.Stratis" # Launch into existing Editor Mission
 parameters = [
+    "-mod=WS"
 ]

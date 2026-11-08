@@ -1,7 +1,7 @@
 /**
 Fast Recompiling via function
 **/
-// #define DISABLE_COMPILE_CACHE
+#define DISABLE_COMPILE_CACHE
 // To Use: [] call ACE_PREP_RECOMPILE;
 
 #ifdef DISABLE_COMPILE_CACHE
