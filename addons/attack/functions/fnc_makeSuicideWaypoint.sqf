@@ -96,7 +96,15 @@ _waypointGroup setVariable ["LockOnCircles", _existingSuicideWaypoints, true];
 		private _drone = _x;
 
 		// acquire target
-		private _visibleTargets = _aliveTargets select { [objNull, "VIEW"] checkVisibility [getPosASL _drone, getPosASL _x] != 0 };		// check line-of-sight
+		private _positionCode = { 
+			if (  _x isKindOf "CAManBase") exitWith { eyePos _x }; 
+			/* else */	
+			private _bottomOfModel = getPosASL _x; 
+			private _bbr = boundingBoxReal [_x, "ViewGeometry"];
+			private _heightOfModel = _bbr#1#2 - _bbr#0#2;
+			_bottomOfModel vectorAdd [0,0, _heightOfModel];	// return top of model
+		};
+		private _visibleTargets = _aliveTargets select { [objNull, "VIEW"] checkVisibility [getPosASL _drone, call _positionCode] != 0 };		// check line-of-sight
 		private _viableTargets = _visibleTargets select { !(_x isKindOf (typeOf _drone)) };		// don't lock on to drones of the same type
 		private _target = selectRandom _viableTargets;
 		if (isNil "_target") exitWith {
