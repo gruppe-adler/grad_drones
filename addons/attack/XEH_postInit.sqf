@@ -1,17 +1,16 @@
 #include "script_component.hpp"
 
 
-if (isServer) then {
-	// list of suicide drones and their targets
-	// format: [[_drone, _target]];
-	GVAR(SuicideDrones) = [];
-	publicVariable QGVAR(SuicideDrones);
-};
+// list of suicide drones and their targets
+// format: [[_drone, _target]];
+GVAR(SuicideDrones) = [];
+publicVariable QGVAR(SuicideDrones);
+
 
 if (!hasInterface) exitWith {};
 
 
-// draw red line between suicide drone and its target
+// draw red line between suicide drone and its target (and react to waypoints being edited)
 ["zen_curatorDisplayLoaded", {	// wait for player to open Zeus for the 1st time as we need to check if zeus, and we cannot do that at mission time 0 due to race-condition
 	
 	// draw in 3D space
