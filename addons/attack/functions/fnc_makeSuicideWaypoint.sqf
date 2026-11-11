@@ -1,3 +1,4 @@
+#include "..\script_component.hpp"
 /*/////////////////////////////////////////////////
 Author: Bernhard
 			   
@@ -24,7 +25,7 @@ private _timeout = 60;			// when to stop trying to reach the lock-on zone (in se
 
 
 // visualize circle for Zeus at which target lock-on will be attempted
-private _circles = [_waypoint, _lockOnRadius] call grad_drones_attack_fnc_createLockOnCircle;
+private _circles = [_waypoint, _lockOnRadius] call FUNC(createLockOnCircle);
 
 
 // store lock circles on group object
@@ -44,7 +45,7 @@ _waypointGroup setVariable ["LockOnCircles", _existingSuicideWaypoints, true];
 { 
 	params ["_waypointGroup", "_circleCenter", "_lockOnRadius"];
 
-	[_circleCenter] call grad_drones_attack_fnc_deleteLockOnCircle;	// remove green lock-on circles
+	[_circleCenter] call FUNC(deleteLockOnCircle);	// remove green lock-on circles
 
 	private _searchRadius = _lockOnRadius*1.5;
 
@@ -96,7 +97,8 @@ _waypointGroup setVariable ["LockOnCircles", _existingSuicideWaypoints, true];
 
 		// acquire target
 		private _visibleTargets = _aliveTargets select { [objNull, "VIEW"] checkVisibility [getPosASL _drone, getPosASL _x] != 0 };		// check line-of-sight
-		private _target = selectRandom _visibleTargets;
+		private _viableTargets = _visibleTargets select { !(_x isKindOf (typeOf _drone)) };		// don't lock on to drones of the same type
+		private _target = selectRandom _viableTargets;
 		if (isNil "_target") exitWith {
 			[{ 
 				["zen_common_showMessage", ["No target for suicide drone found"], allCurators] call CBA_fnc_targetEvent;	// send message to all curators
@@ -106,16 +108,16 @@ _waypointGroup setVariable ["LockOnCircles", _existingSuicideWaypoints, true];
 		_drone setVariable ["suicideTarget", _target, true];
 
 		// maintain list of drones with targets
-		SuicideDrones pushBack [_drone, _target];
-		publicVariable "SuicideDrones";	
+		GVAR(SuicideDrones) pushBack [_drone, _target];
+		publicVariable QGVAR(SuicideDrones);	
 		[{	// garbage collector for dead drones/targets
 			private _filterCode = { 
 				_x params ["_drone", "_target"]; 
 				(!alive _drone) || { !alive _target }; 
 			};
-			private _elementsWithDeadMembers = SuicideDrones select _filterCode;
-			SuicideDrones = SuicideDrones - _elementsWithDeadMembers;
-			publicVariable "SuicideDrones";
+			private _elementsWithDeadMembers = GVAR(SuicideDrones) select _filterCode;
+			SuicideDrones = GVAR(SuicideDrones) - _elementsWithDeadMembers;
+			publicVariable QGVAR(SuicideDrones);
 		}, 5] call CBA_fnc_addPerFrameHandler;
 
 		// kill drone once it collides with the target

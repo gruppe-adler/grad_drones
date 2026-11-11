@@ -1,3 +1,4 @@
+#include "..\script_component.hpp"
 /*/////////////////////////////////////////////////
 Author: Bernhard
 			   
@@ -34,8 +35,8 @@ private _lockOnTriggerCircleMarkerName = format ["lockOnTriggerCircleMarker_%1_%
 	[{
 		if (isNull curatorCamera) exitWith {};	// keep hidden if not in Zeus mode
 		params ["_lockOnTriggerCircle", "_lockOnRadius", "_lockOnTriggerCircleMarkerName"];
-		_lockOnTriggerCircle hideObject false;
 		_lockOnTriggerCircle setObjectScale _lockOnRadius/40;			// scale to proper size (circle has a 17m radius by default)				
+		_lockOnTriggerCircle hideObject false;
 
 		// 2D circle on map
 		_lockOnTriggerCircleMarker = createMarkerLocal [_lockOnTriggerCircleMarkerName, getWPPos _waypoint];

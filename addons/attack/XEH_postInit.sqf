@@ -1,6 +1,13 @@
 #include "script_component.hpp"
 
 
+if (isServer) then {
+	// list of suicide drones and their targets
+	// format: [[_drone, _target]];
+	GVAR(SuicideDrones) = [];
+	publicVariable QGVAR(SuicideDrones);
+};
+
 if (!hasInterface) exitWith {};
 
 
@@ -13,7 +20,7 @@ if (!hasInterface) exitWith {};
 		{
 			_x params ["_drone", "_target"];
 			drawLine3D [ASLToAGL getPosASL _drone, ASLToAGL getPosASL _target, [1,0,0,1], 10];
-		} forEach SuicideDrones;
+		} forEach GVAR(SuicideDrones);
 	}];
 
 
@@ -26,7 +33,7 @@ if (!hasInterface) exitWith {};
 			{
 				_x params ["_drone", "_target"];
 				_map drawLine [getPos _drone, getPos _target, [1,0,0,1], 8];
-			} forEach SuicideDrones;
+			} forEach GVAR(SuicideDrones);
 		}];	
 	}, nil, 
 	// timeout time and code
@@ -68,7 +75,7 @@ if (!hasInterface) exitWith {};
 			private _waypoint = _circleCenter getVariable ["LockOnTriggerWaypoint", objNull];
 			private _shallDelete = (_waypoint isEqualTo _deletedWaypoint) || !(_waypoint in (waypoints _group));
 			if (_shallDelete) then {
-				[_circleCenter] call grad_drones_attack_fnc_deleteLockOnCircle;	// remove green lock-on circles
+				[_circleCenter] call FUNC(deleteLockOnCircle);	// remove green lock-on circles
 			};			
 		} forEach _LockOnCircles;
 	}];
@@ -79,14 +86,14 @@ if (!hasInterface) exitWith {};
 
 
 // ACE menu with Zeus utilities
-private _prepareDemolitionDroneAction = ["prepareDemolitinDrone","Prepare Demolition Drone","\A3\Drones_F\Air_F_Gamma\UAV_01\Data\UI\Map_UAV_01_CA.paa",{ { _x call grad_drones_attack_fnc_prepareDemolitionDrone; } forEach curatorSelected#0; },{"UAV_01_base_F" call grad_drones_util_fnc_curatorSelectedIsKindOf;}] call ace_interact_menu_fnc_createAction;
+private _prepareDemolitionDroneAction = ["prepareDemolitinDrone","Prepare Demolition Drone","\A3\Drones_F\Air_F_Gamma\UAV_01\Data\UI\Map_UAV_01_CA.paa",{ { _x call FUNC(prepareDemolitionDrone); } forEach curatorSelected#0; },{"UAV_01_base_F" call EFUNC(util,curatorSelectedIsKindOf);}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _prepareDemolitionDroneAction] call ace_interact_menu_fnc_addActionToZeus;
 
-private _prepareSniperDroneAction = ["prepareSniperDrone","Prepare Sniper Drone","\lxWS\air_f_lxWS\Data\UI\UAV_02_CA.paa",{ { _x call grad_drones_attack_fnc_prepareSniperDrone; } forEach curatorSelected#0; },{"UAV_02_Base_lxWS" call grad_drones_util_fnc_curatorSelectedIsKindOf;}] call ace_interact_menu_fnc_createAction;
+private _prepareSniperDroneAction = ["prepareSniperDrone","Prepare Sniper Drone","\lxWS\air_f_lxWS\Data\UI\UAV_02_CA.paa",{ { _x call FUNC(prepareSniperDrone); } forEach curatorSelected#0; },{"UAV_02_Base_lxWS" call EFUNC(util,curatorSelectedIsKindOf);}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _prepareSniperDroneAction] call ace_interact_menu_fnc_addActionToZeus;
 
-private _makeSuicideWaypointAction = ["makeSuicideWaypoint","Make Suicide Waypoint","\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa",{ { _x call grad_drones_attack_fnc_makeSuicideWaypoint; } forEach curatorSelected#2; },{ true /* define condition */}] call ace_interact_menu_fnc_createAction;
+private _makeSuicideWaypointAction = ["makeSuicideWaypoint","Make Suicide Waypoint","\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa",{ { _x call FUNC(makeSuicideWaypoint); } forEach curatorSelected#2; },{ true /* define condition */}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions", "ZeusWaypoints"], _makeSuicideWaypointAction] call ace_interact_menu_fnc_addActionToZeus;
 
-private _detonateDroneAction = ["detonateDrone","Detonate Drone","\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa", { (vehicle remoteControlled player) setDamage 1;  },{ !(((attachedObjects vehicle remoteControlled player) select { _x isKindOf "ModuleExplosive_DemoCharge_F"}) isEqualTo []) }] call ace_interact_menu_fnc_createAction;
+private _detonateDroneAction = ["detonateDrone","Detonate Drone","\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa", { (vehicle remoteControlled player) setDamage 1;  },{ ((attachedObjects vehicle remoteControlled player) select { _x isKindOf "ModuleExplosive_DemoCharge_F"}) isNotEqualTo [] }] call ace_interact_menu_fnc_createAction;
  ["UAV_01_base_F", 1, ["ACE_SelfActions"], _detonateDroneAction, true] call ace_interact_menu_fnc_addActionToClass;
