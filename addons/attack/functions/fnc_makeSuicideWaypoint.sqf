@@ -58,7 +58,7 @@ _waypointGroup setVariable ["LockOnCircles", _existingSuicideWaypoints, true];
 			private _hide = isNull curatorCamera;	// hide if not in Zeus mode
 			_search4TargetsCircle hideObject _hide;
 			if (!_hide) then {	playSound "Beep_Target"; };	// notification sound
-			_search4TargetsCircle setObjectScale _searchRadius/80;			// scale to proper size (circle has a 17m radius by default)
+			_search4TargetsCircle setObjectScale _searchRadius/80;			// scale to proper size (circle has a 80m radius by default)
 
 			// 2D circle on map
 			_search4TargetsCircleMarker = createMarkerLocal [format ["search4TargetsCircleMarker_%1_%2", _waypoint, diag_tickTime], getPos _circleCenter];
