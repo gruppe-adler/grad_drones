@@ -20,12 +20,11 @@ if !(_vics#0 isKindOf "UAV_01_base_F") exitWith {
 };
 
 private _waypoint = _this;
-private _lockOnRadius = 50;		// at what radius will drone try to find a target to lock onto
 private _timeout = 60;			// when to stop trying to reach the lock-on zone (in seconds)
 
 
 // visualize circle for Zeus at which target lock-on will be attempted
-private _circles = [_waypoint, _lockOnRadius] call FUNC(createLockOnCircle);
+private _circles = [_waypoint, GVAR(lockOnRadius)] call FUNC(createLockOnCircle);
 
 
 // store lock circles on group object
@@ -37,17 +36,17 @@ _waypointGroup setVariable ["LockOnCircles", _existingSuicideWaypoints, true];
 
 // steer drone into target if it is close enough
 [{ 	// condition code
-	params ["_waypointGroup", "_circleCenter", "_lockOnRadius"];
+	params ["_waypointGroup", "_circleCenter"];
 	private _dronePos = getPos leader (_waypointGroup);
 	private _distance = ( _dronePos distance2D (getPos _circleCenter) ); 	// if drone to waypoint distance gets below lock on radius
-	_distance < _lockOnRadius;	// condition at which the suicide drone will start searching for targets
+	_distance < GVAR(lockOnRadius);	// condition at which the suicide drone will start searching for targets
 }, 	
 { 
-	params ["_waypointGroup", "_circleCenter", "_lockOnRadius"];
+	params ["_waypointGroup", "_circleCenter"];
 
 	[_circleCenter] call FUNC(deleteLockOnCircle);	// remove green lock-on circles
 
-	private _searchRadius = _lockOnRadius*1.5;
+	private _searchRadius = GVAR(lockOnRadius)*1.5;
 
 	// visualize search radius for Zeus
 	private _search4TargetsCircle = createSimpleObject ["\a3\Modules_F_Curator\Ordnance\surfaceHowitzer.p3d", getPos _circleCenter];
@@ -156,12 +155,12 @@ _waypointGroup setVariable ["LockOnCircles", _existingSuicideWaypoints, true];
 		}, 0, [_drone, _target, _isInfantry]] call CBA_fnc_addPerFrameHandler;
 	} forEach (assignedVehicles _waypointGroup);
 }, 
-[_waypointGroup, _circleCenter, _lockOnRadius, _timeout], 	// parameter list (for condition and code)
+[_waypointGroup, _circleCenter, _timeout], 	// parameter list (for condition and code)
 
 // timeout time and code
 _timeout, 
 {
-	params ["_waypointGroup", "_circleCenter", "_lockOnRadius", "_timeout"];
+	params ["_waypointGroup", "_circleCenter", "_timeout"];
 	["zen_common_showMessage", [format ["Suicide waypoint not reached before timeout of %1 seconds", _timeout]], allCurators] call CBA_fnc_targetEvent;	// send message to all curators
 	[_circleCenter] call grad_drones_attack_fnc_deleteLockOnCircle;	// remove green lock-on circles
 }

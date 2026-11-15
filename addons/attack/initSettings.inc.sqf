@@ -17,13 +17,12 @@
     [100, 5000, 800, 0],
     true
 ] call CBA_fnc_addSetting;
+*/
 
 [
-    QGVAR(lostDistance),
+    QGVAR(lockOnRadius),
     "SLIDER",
-    [LSTRING(lostDistance_displayName), LSTRING(lostDistance_description)],
+    [LSTRING(lockOnRadius_displayName), LSTRING(lockOnRadius_description)],
     [LSTRING(GradDrones), LSTRING(subCategory)],
-    [100, 6000, 1200, 0],
-    true
+    [30, 200, 50, 0]
 ] call CBA_fnc_addSetting;
-*/

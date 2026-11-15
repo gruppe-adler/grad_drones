@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="grad_drones">
+    <Package name="Attack">
+        <Key ID="STR_grad_drones_attack_GradDrones">
+            <English>Gruppe Adler Drones</English>
+            <German>Gruppe Adler Drones</German>
+        </Key>
+        <Key ID="STR_grad_drones_attack_lockOnRadius_description">
+            <English>When drone is within this radius (in meters) to a suicide waypoint, it will start looking for a target to lock onto.</English>
+        </Key>
+        <Key ID="STR_grad_drones_attack_lockOnRadius_displayName">
+            <English>Lock-on radius (around suicide waypoint)</English>
+        </Key>
+        <Key ID="STR_grad_drones_attack_subCategory">
+            <English>Attack drones</English>
+        </Key>
+    </Package>
+</Project>
