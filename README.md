@@ -11,9 +11,11 @@ It intends to bring the capability of drones closer to those of our current real
 For starters it only modifies the AR-2 Darter drones.
 
 - The `sound` sub-module makes the **exterior sound of the Darter much louder**.
-> - The **suicide drones** functionality, that is currently only part of [COOP mission Just Expedition](https://github.com/gruppe-adler/CO_Just_Expedition.Altis/tree/main/scripts/util/functions), will be ported later to be part of `grad_drones` then.
->   - It allows to create **demolition drones** as Zeus (or via script).
->   - In addition Zeus (or a script) can create **suicide waypoints**, that when reached let drones lock on to visible targets and steer themselves into them.
+- The `attack` sub-module allows for creation of:
+  - **demolition drones** as Zeus (or via script).
+  - **suicide waypoints** as Zeus (or a script)
+    - When those are reached, drones lock onto visible targets and steer themselves into them.
+- The `uav_link` sub-module let's the drone video signal deteriorate with distance (when using the UAVTerminal).
 
 # Contribution
 Suggestions and PRs are welcome. 
