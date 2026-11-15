@@ -7,9 +7,16 @@
         </Key>
         <Key ID="STR_grad_drones_attack_lockOnRadius_description">
             <English>When drone is within this radius (in meters) to a suicide waypoint, it will start looking for a target to lock onto.</English>
+            <German>Wenn die Drohne sich in diesem Radius (in Metern) zu einem Suizid-Wegpunkt befindet, wird sie mit der Suche nach einem Ziel fortfahren.</German>
         </Key>
         <Key ID="STR_grad_drones_attack_lockOnRadius_displayName">
             <English>Lock-on radius (around suicide waypoint)</English>
+        </Key>
+        <Key ID="STR_grad_drones_attack_pullForceRatio_description">
+            <English>(lock-on pull force)/(drone weight); the higher this setting, the more powerful drones will be pulled into their target</English>
+        </Key>
+        <Key ID="STR_grad_drones_attack_pullForceRatio_displayName">
+            <English>Pull Force Ratio</English>
         </Key>
         <Key ID="STR_grad_drones_attack_subCategory">
             <English>Attack drones</English>

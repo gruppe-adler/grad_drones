@@ -8,15 +8,6 @@
     true,
     {[] call FUNC(startMonitor);}
 ] call CBA_fnc_addSetting;
-
-[
-    QGVAR(degradeDistance),
-    "SLIDER",
-    [LSTRING(degradeDistance_displayName), LSTRING(degradeDistance_description)],
-    [LSTRING(GradDrones), LSTRING(subCategory)],
-    [100, 5000, 800, 0],
-    true
-] call CBA_fnc_addSetting;
 */
 
 [
@@ -24,5 +15,13 @@
     "SLIDER",
     [LSTRING(lockOnRadius_displayName), LSTRING(lockOnRadius_description)],
     [LSTRING(GradDrones), LSTRING(subCategory)],
-    [30, 200, 50, 0]
+    [30, 200, 50]
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(pullForceRatio),
+    "SLIDER",
+    [LSTRING(pullForceRatio_displayName), LSTRING(pullForceRatio_description)],
+    [LSTRING(GradDrones), LSTRING(subCategory)],
+    [0.1, 1, 0.3]
 ] call CBA_fnc_addSetting;

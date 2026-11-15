@@ -149,7 +149,7 @@ _waypointGroup setVariable ["LockOnCircles", _existingSuicideWaypoints, true];
 			};
 
 			private _forwardVector = vectorNormalized ((getPos _target) vectorDiff (getPos _drone));
-			_pullForce = _forwardVector vectorMultiply 50;
+			_pullForce = _forwardVector vectorMultiply (GVAR(pullForceRatio) * getMass _drone);
 			_drone addForce [_pullForce, [0,0,0]];
 
 		}, 0, [_drone, _target, _isInfantry]] call CBA_fnc_addPerFrameHandler;
