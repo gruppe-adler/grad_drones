@@ -15,7 +15,7 @@
     "SLIDER",
     [LSTRING(lockOnRadius_displayName), LSTRING(lockOnRadius_description)],
     [LSTRING(GradDrones), LSTRING(subCategory)],
-    [30, 200, 50]
+    [30, 200, 50, 0]
 ] call CBA_fnc_addSetting;
 
 [
@@ -23,5 +23,5 @@
     "SLIDER",
     [LSTRING(pullForceRatio_displayName), LSTRING(pullForceRatio_description)],
     [LSTRING(GradDrones), LSTRING(subCategory)],
-    [0.1, 1, 0.3]
+    [0.1, 1, 0.3, 2]
 ] call CBA_fnc_addSetting;
